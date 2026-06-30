@@ -261,6 +261,7 @@
       </div>
     </section>
 
+
     <!-- 项目经历 -->
     <section>
       <h2 class="section-title">项目经历</h2>
@@ -268,7 +269,7 @@
       <h3 class="project-group-title">核心项目</h3>
 
       <div class="projects">
-        <article class="project-card">
+        <article class="project-card" data-repo="https://github.com/ZhanJieHu/RagAgentJudge">
           <h3>LLM Evaluation Pipeline</h3>
           <p>
             基于 DeepEval 搭建可复用的大模型评测流水线，覆盖 RAG 与工具调用型 Agent 两类典型场景。
@@ -282,10 +283,10 @@
             <span class="tag">RAG Evaluation</span>
             <span class="tag">Agent Evaluation</span>
           </div>
-          <a class="project-link" href="https://github.com/ZhanJieHu/RagAgentJudge" target="_blank">查看项目 →</a>
+          <a class="project-link" target="_blank">查看项目 → <span class="repo-url"></span></a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-repo="https://github.com/ZhanJieHu/RAG_data_generator">
           <h3>垂直领域问答数据生成系统</h3>
           <p>
             以徽商研究为例，将书籍和文档转化为可用于 RAG 检索、评测与问答系统构建的结构化数据集。
@@ -299,10 +300,10 @@
             <span class="tag">Evidence Tracking</span>
             <span class="tag">LLM Pipeline</span>
           </div>
-          <a class="project-link" href="https://github.com/ZhanJieHu/RAG_data_generator" target="_blank">查看项目 →</a>
+          <a class="project-link" target="_blank">查看项目 → <span class="repo-url"></span></a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-repo="https://github.com/ZhanJieHu/SDGAN">
           <h3>自研视频定位模型</h3>
           <p>
             基于 PyTorch 设计并实现端到端时序视频定位模型，面向语言查询在未剪辑视频中定位对应时段。
@@ -316,14 +317,14 @@
             <span class="tag">Multimodal Learning</span>
             <span class="tag">Graph Modeling</span>
           </div>
-          <a class="project-link" href="https://github.com/ZhanJieHu/SDGAN" target="_blank">查看项目 →</a>
+          <a class="project-link" target="_blank">查看项目 → <span class="repo-url"></span></a>
         </article>
       </div>
 
       <h3 class="project-group-title">工程工具与辅助项目</h3>
 
       <div class="projects">
-        <article class="project-card">
+        <article class="project-card" data-repo="https://github.com/ZhanJieHu/PrintObjects">
           <h3>PrintObjects：复杂变量结构化打印工具</h3>
           <p>
             在深度学习调试中，list、dict、tensor、numpy array 等数据结构经常多层嵌套，普通 print 难以清晰展示变量结构。
@@ -336,10 +337,10 @@
             <span class="tag">Debug Tool</span>
             <span class="tag">PyTorch</span>
           </div>
-          <a class="project-link" href="https://github.com/ZhanJieHu/PrintObjects" target="_blank">查看项目 →</a>
+          <a class="project-link" target="_blank">查看项目 → <span class="repo-url"></span></a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-repo="https://github.com/ZhanJieHu/StageManager">
           <h3>StageManager：多阶段训练管理工具</h3>
           <p>
             面向 PyTorch 训练流程的轻量级阶段管理工具，用于替代复杂的 epoch 区间 if/else 训练逻辑。
@@ -352,10 +353,10 @@
             <span class="tag">Training Pipeline</span>
             <span class="tag">YAML Config</span>
           </div>
-          <a class="project-link" href="https://github.com/ZhanJieHu/StageManager" target="_blank">查看项目 →</a>
+          <a class="project-link" target="_blank">查看项目 → <span class="repo-url"></span></a>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-repo="https://github.com/ZhanJieHu/BridgePatternDatasets">
           <h3>Bridge Pattern Dataset Manager</h3>
           <p>
             面向“多个数据集 × 多种数据格式”的数据管理问题，使用桥接设计模式解耦样本语义与底层读取逻辑。
@@ -369,10 +370,34 @@
             <span class="tag">PyTorch</span>
             <span class="tag">Multi-format Data</span>
           </div>
-          <a class="project-link" href="https://github.com/ZhanJieHu/BridgePatternDatasets" target="_blank">查看项目 →</a>
+          <a class="project-link" target="_blank">查看项目 → <span class="repo-url"></span></a>
         </article>
       </div>
     </section>
+
+    <!-- 样式：弱化链接地址文字 -->
+    <style>
+      .repo-url {
+        color: #777;
+        margin-left: 8px;
+        font-size: 0.9em;
+        word-break: break-all;
+      }
+    </style>
+
+    <!-- 全局JS逻辑，自动处理所有项目卡片 -->
+    <script>
+    document.querySelectorAll('.project-card').forEach(card => {
+      // 取出当前卡片内存储的仓库地址（每个article独立临时变量）
+      const repoUrl = card.dataset.repo;
+      const linkEl = card.querySelector('.project-link');
+      const urlTextEl = card.querySelector('.repo-url');
+      // 赋值跳转链接
+      linkEl.href = repoUrl;
+      // 页面展示完整github地址
+      urlTextEl.textContent = repoUrl;
+    })
+    </script>
 
   </main>
 </body>
