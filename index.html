@@ -1,16 +1,379 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <title>My Portfolio</title>
-</head>
-<body>
-  <h1>Hello, I'm Li</h1>
-  <p>AI Engineer / Agent Developer</p>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>个人主页</title>
 
-  <h2>Projects</h2>
-  <ul>
-    <li>RAG Eval System</li>
-    <li>Multi-Agent Video QA</li>
-  </ul>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
+        "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff, #eef4ff);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 32px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: 42px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .hero .subtitle {
+      font-size: 22px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      font-size: 17px;
+      color: var(--muted);
+    }
+
+    .contact {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact a,
+    .contact span {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    section {
+      margin-top: 36px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      margin: 0 0 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .skill-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .skill-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .project-group-title {
+      margin: 32px 0 16px;
+      font-size: 22px;
+      color: #111827;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .project-card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .project-card p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    .project-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tag-row {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 28px 16px 56px;
+      }
+
+      .hero {
+        padding: 30px 24px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero .subtitle {
+        font-size: 18px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <!-- 个人简介 -->
+    <header class="hero">
+      <h1>胡战捷</h1>
+      <div class="subtitle">Agent工程师 / LLM系统方向开发者</div>
+      <p>
+        专注于 RAG 系统、Agent 开发与大模型评测体系构建，关注如何将大模型能力落到可测试、可追溯、可迭代的工程系统中。
+      </p>
+
+      <div class="contact">
+        <span>邮箱：2910238526@qq.com</span>
+        <!--<a href="【你的GitHub链接】" target="_blank">GitHub</a>-->
+        <!--<a href="【你的项目主页或简历链接】" target="_blank">项目主页</a>-->
+      </div>
+    </header>
+
+    <!-- 核心方向 -->
+    <section>
+      <h2 class="section-title">核心方向</h2>
+
+      <div class="skills">
+        <div class="skill-card">
+          <h3>RAG 系统设计</h3>
+          <p>构建面向真实业务语料的检索增强生成系统，关注检索、重排序、回答生成与可追溯性。</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>多智能体系统</h3>
+          <p>关注 Agent 任务拆解、工具调用、流程控制与多步任务的自动化评估。</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>RAG / Agent 评测</h3>
+          <p>基于 LLM-as-a-Judge 设计评测指标，用于回归测试、模型版本对比与失败原因分析。</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>多模态算法</h3>
+          <p>深耕图文/视频跨模态语义对齐、时序视频定位、图像&视频通用理解。</p>
+          <!--；独立完成多模态数据集构建、特征融合方案设计，完整落地从数据预处理、模型训练到评测全链路科研流程-->
+        </div>
+
+        <div class="skill-card">
+          <h3>深度学习工程</h3>
+          <p>熟练搭建分布式训练流水线，掌握模型调优、损失函数定制、指标评测与性能优化；可独立完成算法原型验证、消融实验、对比实验等完整科研闭环。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 项目经历 -->
+    <section>
+      <h2 class="section-title">项目经历</h2>
+
+      <h3 class="project-group-title">核心项目</h3>
+
+      <div class="projects">
+        <article class="project-card">
+          <h3>LLM Evaluation Pipeline</h3>
+          <p>
+            基于 DeepEval 搭建可复用的大模型评测流水线，覆盖 RAG 与工具调用型 Agent 两类典型场景。
+          </p>
+          <p>
+            项目支持回归测试、模型版本对比和失败案例定位，可通过多维指标分析模型跑题、幻觉、工具选择错误等问题。
+          </p>
+          <div class="tag-row">
+            <span class="tag">DeepEval</span>
+            <span class="tag">LLM-as-a-Judge</span>
+            <span class="tag">RAG Evaluation</span>
+            <span class="tag">Agent Evaluation</span>
+          </div>
+          <a class="project-link" href="https://github.com/ZhanJieHu/RagAgentJudge" target="_blank">查看项目 →</a>
+        </article>
+
+        <article class="project-card">
+          <h3>垂直领域问答数据生成系统</h3>
+          <p>
+            以徽商研究为例，将书籍和文档转化为可用于 RAG 检索、评测与问答系统构建的结构化数据集。
+          </p>
+          <p>
+            系统包含文本切分、事实抽取与问答生成流程，强调基于原文证据生成答案，降低领域问答数据中的幻觉风险。
+          </p>
+          <div class="tag-row">
+            <span class="tag">RAG Dataset</span>
+            <span class="tag">Domain QA</span>
+            <span class="tag">Evidence Tracking</span>
+            <span class="tag">LLM Pipeline</span>
+          </div>
+          <a class="project-link" href="https://github.com/ZhanJieHu/RAG_data_generator" target="_blank">查看项目 →</a>
+        </article>
+
+        <article class="project-card">
+          <h3>自研视频定位模型</h3>
+          <p>
+            基于 PyTorch 设计并实现端到端时序视频定位模型，面向语言查询在未剪辑视频中定位对应时段。
+          </p>
+          <p>
+            独立搭建完整深度学习训练与推理流水线，提出静态/动态视觉特征融合、查询感知图建模等方法，提升定位精度。
+          </p>
+          <div class="tag-row">
+            <span class="tag">PyTorch</span>
+            <span class="tag">Temporal Video Grounding</span>
+            <span class="tag">Multimodal Learning</span>
+            <span class="tag">Graph Modeling</span>
+          </div>
+          <a class="project-link" href="https://github.com/ZhanJieHu/SDGAN" target="_blank">查看项目 →</a>
+        </article>
+      </div>
+
+      <h3 class="project-group-title">工程工具与辅助项目</h3>
+
+      <div class="projects">
+        <article class="project-card">
+          <h3>PrintObjects：复杂变量结构化打印工具</h3>
+          <p>
+            在深度学习调试中，list、dict、tensor、numpy array 等数据结构经常多层嵌套，普通 print 难以清晰展示变量结构。
+          </p>
+          <p>
+            该工具可以有条理地打印复杂对象的层级、类型、形状和关键信息，帮助快速理解 dataloader、batch、模型输出、指标字典等复杂变量。
+          </p>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">Debug Tool</span>
+            <span class="tag">PyTorch</span>
+          </div>
+          <a class="project-link" href="https://github.com/ZhanJieHu/PrintObjects" target="_blank">查看项目 →</a>
+        </article>
+
+        <article class="project-card">
+          <h3>StageManager：多阶段训练管理工具</h3>
+          <p>
+            面向 PyTorch 训练流程的轻量级阶段管理工具，用于替代复杂的 epoch 区间 if/else 训练逻辑。
+          </p>
+          <p>
+            通过 YAML 配置控制不同阶段的输入模态、损失权重、打印策略和保存策略，使训练流程更清晰、可复用。
+          </p>
+          <div class="tag-row">
+            <span class="tag">PyTorch</span>
+            <span class="tag">Training Pipeline</span>
+            <span class="tag">YAML Config</span>
+          </div>
+          <a class="project-link" href="https://github.com/ZhanJieHu/StageManager" target="_blank">查看项目 →</a>
+        </article>
+
+        <article class="project-card">
+          <h3>Bridge Pattern Dataset Manager</h3>
+          <p>
+            面向“多个数据集 × 多种数据格式”的数据管理问题，使用桥接设计模式解耦样本语义与底层读取逻辑。
+          </p>
+          <p>
+            数据集类负责定义样本包含什么，加载后端负责处理 pt、hdf5、npy 等不同存储格式，从而提升多数据集、多模态实验代码的扩展性。
+          </p>
+          <div class="tag-row">
+            <span class="tag">Design Pattern</span>
+            <span class="tag">Dataset Management</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Multi-format Data</span>
+          </div>
+          <a class="project-link" href="https://github.com/ZhanJieHu/BridgePatternDatasets" target="_blank">查看项目 →</a>
+        </article>
+      </div>
+    </section>
+
+  </main>
 </body>
 </html>
