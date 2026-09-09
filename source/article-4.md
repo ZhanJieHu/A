@@ -12,8 +12,8 @@ People sometimes become surprisingly anxious when they do not have access to the
 
 When an LLM gives an unsatisfactory answer, a common reaction is:
 
-> Maybe the free model is just not smart enough.
-> Maybe the newest model would understand what I mean.
+*Maybe the free model is just not smart enough.* 
+*Maybe the newest model would understand what I mean.*
 
 Sometimes that is true. Better models can reason more reliably, follow instructions better, handle longer contexts, and make fewer mistakes.
 
@@ -31,9 +31,7 @@ No matter how advanced models become, one basic limitation remains unchanged:
 
 **the model must make its decision based on information available to it.**
 
-Suppose you ask:
-
-> Which option should I choose?
+Suppose you ask: *Which option should I choose?* 
 
 The model may know a great deal about the options themselves.
 
@@ -78,12 +76,11 @@ For important tasks, **providing the missing information is usually safer than h
 
 The obvious answer is:
 
-**write better prompts.**
+> **write better prompts.**
 
 There are already countless prompt-engineering tutorials, and ironically, you can ask an LLM itself to improve your prompt.
 
 I only want to emphasize a few principles that I find especially useful.
-
 
 
 ## 1. Provide Precise Information, Not Maximum Information
@@ -92,11 +89,7 @@ A good prompt is not necessarily a long prompt.
 
 The ideal situation is that you understand what information is necessary to solve the problem and provide exactly that information.
 
-Then the model can combine:
-
-> **your context + its existing knowledge + reasoning**
-
-to produce the answer.
+Then the model can combine: **your context + its existing knowledge + reasoning** to produce the answer.
 
 A common mistake is to paste a huge amount of loosely related material into the conversation.
 
@@ -109,14 +102,11 @@ They may:
 * make important constraints harder to notice;
 * encourage the model to solve the wrong problem.
 
-The goal should therefore not be:
-
-> Give the model as much information as possible.
+The goal should therefore not be: Give the model as much information as possible.
 
 It should be:
 
 > **Give the model exactly the information it needs to derive the answer.**
-
 
 
 ## 2. Let the Model Ask You Questions
@@ -129,13 +119,12 @@ There is a very simple solution: explicitly tell the model not to guess.
 
 For example:
 
-> If important information is missing, do not assume what I mean. Ask me the necessary questions before giving your recommendation.
+*If important information is missing, do not assume what I mean. Ask me the necessary questions before giving your recommendation.*
 
 Or more specifically:
 
-> Before answering, identify any missing information that could materially change your recommendation. Ask me for that information first.
+*Before answering, identify any missing information that could materially change your recommendation. Ask me for that information first.*
 
 In other words, **you do not always need to know how to write the perfect prompt yourself**.
 
 You can let the model help construct the prompt through conversation.
-
