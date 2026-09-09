@@ -18,14 +18,13 @@
 新增文章时：
 
 1. 在 `source/` 新建 Markdown 文件，例如 `article-4.md`。
-2. 在文件顶部填写标题、日期、简介和阅读时间：
+2. 在文件顶部填写标题、日期和简介：
 
    ```md
    ---
    title: 文章标题
    date: 2026 年 9 月 9 日
    description: 一句话简介。
-   readingTime: 约 4 分钟阅读
    ---
    ```
 

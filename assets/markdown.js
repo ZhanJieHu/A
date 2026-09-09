@@ -170,8 +170,7 @@
       const title = parsed.attributes.title || "未命名文章";
       const date = parsed.attributes.date || "";
       const description = parsed.attributes.description || "";
-      const readingTime = parsed.attributes.readingTime || "";
-      const meta = [date, readingTime].filter(Boolean).join(" · ");
+      const meta = date;
 
       document.title = title + "｜胡战捷";
       const descriptionElement = document.querySelector('meta[name="description"]');
